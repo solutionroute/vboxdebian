@@ -14,6 +14,9 @@
 sudo apt-get install build-essential module-assistant
 sudo m-a prepare
 sudo apt-get install -t stretch-backports virtualbox-guest-dkms virtualbox-guest-x11 linux-headers-$(uname -r)
+sudo mount /dev/cdrom /media/cdrom && cd /dev/cdrom
+sudo ./VBoxLinuxAdditions.run
+cd ~
 
 # tools
 sudo apt-get install git
@@ -30,9 +33,12 @@ sudo make install
 
 # TODO test for existance of .xinitrc otherwise create it
 
+# ssh key gen
+#
+#
 # add pip / setuptools
 #
-# add Neovim
+# add Neovim & python supports / Go / Python customization + dotfiles
 #
 #
-
+# add Go / httphere / etc
