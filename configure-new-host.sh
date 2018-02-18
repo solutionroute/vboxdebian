@@ -11,19 +11,20 @@
 # Add some build tools needed by various apps including VBox
 
 # VBox pre-requisites
-sudo apt-get install build-essential module-assistant
+sudo apt-get install -y build-essential module-assistant
 sudo m-a prepare
-sudo apt-get install -t stretch-backports virtualbox-guest-dkms virtualbox-guest-x11 linux-headers-$(uname -r)
+sudo apt-get install -y -t stretch-backports virtualbox-guest-dkms virtualbox-guest-x11 linux-headers-$(uname -r)
+read -p "Press any key to continue"
 sudo mount /dev/cdrom /media/cdrom && cd /dev/cdrom
 sudo ./VBoxLinuxAdditions.run
 cd ~
 
 # tools
-sudo apt-get install git
+sudo apt-get install -y git
 
 # XOrg
-sudo apt-get install xorg
-sudo apt-get install dwm
+sudo apt-get install -y xorg
+sudo apt-get install -y dwm
 mkdir -p ~/src
 cd ~/src
 git clone git://git.suckless.org/st
