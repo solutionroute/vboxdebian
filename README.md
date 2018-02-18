@@ -3,34 +3,52 @@ Scripts and stuff to fire up a new VirtualBox guest Debian instance
 
 THIS IS NOT READY FOR USE -- Feb 2018
 
-I'm not trying to automate everything, just eliminate some of the
-tedium of firing up a new Debian instance as a VirtualBox guest running on
-a Windows 10 (Surface Pro in my case) host.
+Trying to eliminate some of the tedium involved in firing up a new minimal
+Debian instance running as a VirtualBox guest on a Windows 10 host. 
 
-I'm looking for a minimal almost exclusively text-based environment.
+My motivation - am moving from an old Mint LMDE (1) then 2 environment and am trying to
+reduce cruft while checking out other wms. A couple of re-starts later it made
+sense to document some of the setup steps and automate where easy.
+
+The end result will be a minimal, almost exclusively text-based, environment
+based on a tiling window manager (dwm) that I've used for many years.  Until
+there's a good minimal wm solution that automatically deals with a HiDPI laptop
+with occasionally connected lower DPI external screens, I'm sticking with what
+I know and my kludges (see dotfiles).
+
+## Discovery Tools
+
+	apt-cache search . | grep -i "metapackage\|meta-package" | more
+	apt-cache search . | grep -i "xorg" | more
+	apt-cache depends pkgname
+
+Suggested:
+
+	TODO
+
 
 ## What This Installs In Rough Order of Appearance
 
 * XOrg
-* Window Manager: dwm / suckless-tools / st 
+* DBus and Gnome Terminal
+* Window Manager: dwm / suckless-tools + source (for configuration)
 * VirtualBox Guest Additions for Linux
 * Git
-* Go
-* Neovim
-
+* Go 
+* Neovim & supporting apps for Go / Python / web development
 
 ## Starting Off
 
 We need to do a few things by hand both on the Windows host side and in our new
 Debian instance.
 
-In the VB admin app in Windows:
+**In the VBox admin app in Windows**:
 
 * Create a new vm ("Stretch")
 * Assign something like 20GB for the VDI drive and create.
 * Add the downloaded netinst as an IDE optical drive; start the vm 
 
-In the Debian guest:
+**In the Debian guest**:
 
 * Proceed through the install. 
 * When prompted, don't install a Desktop Environment or print server (unless
@@ -41,12 +59,23 @@ In the Debian guest:
 	apt-get install sudo
 	adduser yournotrootuser sudo
 
-Exit your root shell and logon as yournotrootuser and try to sudo:
-	sudo ls /root
+Exit your root shell and yournotrootuser shell and logon as yournotrootuser and try to sudo:
+	sudo vi /etc/apt/sources.list
 
-If all goes well, carry on.
+If all goes well, carry on and append to sources.list stretch-backports from
+whatever mirror you prefer:
+	deb http://mirror.it.ubc.ca/debian stretch-backports main contrib
+	deb-src http://mirror.it.ubc.ca/debian stretch-backports main contrib 
 
-Next ensure the VirtualBox Guest Additions ISO is mounted as a virtual optical discu on the Windows host.
+	sudo apt-get update
+
+**In the VBox admin app in Windows**:
+
+In Settings, Storage, add or ensure the VBoxGuestAdditions.iso is mounted as
+IDE primary master / virtual optical disc. Return to Debian and:
+
+	sudo mount /dev/cdrom /media/cdrom 
+	> replies with a mount confirmation; don't proceed otherwise.
 
 ## Time for some automation
 
