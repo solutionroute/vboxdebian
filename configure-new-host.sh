@@ -157,9 +157,9 @@ sudo apt-get install neovim
 
 cd
 wget https://bootstrap.pypa.io/get-pip.py
-sudo python get-pip.py 
+sudo python2 get-pip.py 
 sudo python3 get-pip.py 
-sudo pip install neovim
+sudo pip2 install neovim
 sudo pip3 install neovim
 
 # TODO
