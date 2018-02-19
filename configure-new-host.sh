@@ -15,6 +15,7 @@ GOOGLE_CHROME="deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable ma
 BACKPORTS="deb http://mirror.it.ubc.ca/debian/ stretch-backports main contrib
 deb-src http://mirror.it.ubc.ca/debian/ stretch-backports main contrib"
 
+# TODO break into modules
 # TODO make Go optional
 # Update desired version as need be from: https://golang.org/dl/
 GOVERSION=1.10
@@ -34,6 +35,7 @@ sudo apt-get update
 mkdir -p ~/tmp
 mkdir -p ~/src
 mkdir -p ~/go/src
+mkdir -p ~/.nvim-temp
 cd ~
 
 # XOrg / X11 Stuff =============================================================
@@ -144,6 +146,9 @@ fi
 cd ~
 
 # Tools ========================================================================
+# wget is installed by default, let's get curl too
+sudo apt-get install -y curl
+
 # The world runs on Git; Go requires git.
 sudo apt-get install -y git
 
