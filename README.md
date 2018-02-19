@@ -1,31 +1,21 @@
 # vboxdebian
 Scripts and stuff to fire up a new VirtualBox guest Debian instance
 
-THIS IS NOT READY FOR USE -- Feb 2018
+*This is a bit of a work in progress and more of a reminder to myself of what
+I want in a fresh system.*
 
 Trying to eliminate some of the tedium involved in firing up a new minimal
 Debian instance running as a VirtualBox guest on a Windows 10 host. 
 
-My motivation - am moving from an old Mint LMDE (1) then 2 environment and am trying to
-reduce cruft while checking out other wms. A couple of re-starts later it made
-sense to document some of the setup steps and automate where easy.
-
 The end result will be a minimal, almost exclusively text-based, environment
-based on a tiling window manager (dwm) that I've used for many years.  Until
-there's a good minimal wm solution that automatically deals with a HiDPI laptop
-with occasionally connected lower DPI external screens, I'm sticking with what
-I know and my kludges (see dotfiles).
+based on a tiling window manager (dwm).  
 
 ## Discovery Tools
 
 	apt-cache search . | grep -i "metapackage\|meta-package" | more
 	apt-cache search . | grep -i "xorg" | more
 	apt-cache depends pkgname
-
-Suggested:
-
-	TODO
-
+	apt-cache policy pkgname
 
 ## What This Installs In Rough Order of Appearance
 
@@ -33,9 +23,9 @@ Suggested:
 * DBus and Gnome Terminal
 * Window Manager: dwm / suckless-tools + source (for configuration)
 * VirtualBox Guest Additions for Linux
-* Git
-* Go 
+* Git, Go 
 * Neovim & supporting apps for Go / Python / web development
+* Tweaks /etc/bash.bashrc
 
 ## Starting Off
 
@@ -64,6 +54,7 @@ Exit your root shell and yournotrootuser shell and logon as yournotrootuser and 
 
 If all goes well, carry on and append to sources.list stretch-backports from
 whatever mirror you prefer:
+
 	deb http://mirror.it.ubc.ca/debian stretch-backports main contrib
 	deb-src http://mirror.it.ubc.ca/debian stretch-backports main contrib 
 
@@ -87,5 +78,11 @@ As your non-root-user:
 	wget https://raw.githubusercontent.com/solutionroute/vboxdebian/master/configure-new-host.sh
 	sh configure-new-host.sh
 
+## Afterwards
+
+As your non-root user:
+
+	cd
+	ssh-keygen
 
 
