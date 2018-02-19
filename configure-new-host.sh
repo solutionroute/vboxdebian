@@ -94,6 +94,7 @@ else
 	# Update system bashrc
 	sudo sh -c 'echo "export GOBIN=\~/go/bin" >> /etc/bash.bashrc'
 	sudo sh -c 'echo "export PATH=\$PATH:/usr/local/go/bin:\$GOBIN" >> /etc/bash.bashrc'
+	sudo sh -c 'echo "export EDITOR=vim" >> /etc/bash.bashrc'
 	echo "Go installed"
 	# shoving this in here too
 	sudo sh -c 'echo "alias ll='ls -l'" >> /etc/bash.bashrc'
