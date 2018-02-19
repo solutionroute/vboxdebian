@@ -23,7 +23,7 @@ based on a tiling window manager (dwm).
 * DBus and Gnome Terminal
 * Window Manager: dwm / suckless-tools + source (for configuration)
 * VirtualBox Guest Additions for Linux
-* Git, Go 
+* Git, Go, Python `pip`
 * Neovim & supporting apps for Go / Python / web development
 * Tweaks /etc/bash.bashrc
 
