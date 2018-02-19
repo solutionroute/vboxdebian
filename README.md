@@ -7,15 +7,33 @@ I want in a fresh system.*
 Trying to eliminate some of the tedium involved in firing up a new minimal
 Debian instance running as a VirtualBox guest on a Windows 10 host. 
 
-The end result will be a minimal, almost exclusively text-based, environment
-based on a tiling window manager (dwm).  
+## What You Get
+
+Should the script make it through to completion, the end result will be a minimal, 
+almost exclusively text-based, environment based on a tiling window manager (dwm) and
+a GUI login using lightdm.
+
+## Alternatives
+
+Choose a full desktop environment during the intial Debian installation, or, if you try
+a lightweight approach like this one and find it lacking, you can:
+
+	sudo tasksel
+
+To install one of the big desktop metapackages. `man tasksel` to discover what else you can learn.
 
 ## Discovery Tools
+
+As a long time FreeBSD `ports` user now migrated to Linux I sometimes need reminders like these:
 
 	apt-cache search . | grep -i "metapackage\|meta-package" | more
 	apt-cache search . | grep -i "xorg" | more
 	apt-cache depends pkgname
 	apt-cache policy pkgname
+	tasksel --list-tasks
+	# check out one of the stock tasks presented during initial install...
+	apt-cache depends task-desktop
+	apt-cache depends task-desktop
 
 ## What This Installs In Rough Order of Appearance
 
@@ -78,11 +96,18 @@ As your non-root-user:
 	wget https://raw.githubusercontent.com/solutionroute/vboxdebian/master/configure-new-host.sh
 	sh configure-new-host.sh
 
+If all goes well you'll now have a decently if not minimally configured Debian / X / dwm environment with Neovim and Google Chrome installed. Reboot and check it out.
+
 ## Afterwards
 
-As your non-root user:
+Key mappings for `dwm` can be found by reading `~/src/dwm-1.x/config.def.h` but here's a
+quick cheat sheet for the default mappings that are so sensible you probably won't change them:
 
-	cd
-	ssh-keygen
-
-
+	Shift-Alt-Enter - launches a terminal window. 
+	Shift-Alt-Enter - launches another terminal window. 
+	Shift-Alt-Enter - launches another terminal window. 
+	Alt-Enter - zooms the top right Window to the main (left)
+	Alt-2 - switches to the second workspace
+	ALt-j, Alt-k - move forward and back through the desktop window stack
+	Alt-h, Alt-l - resize the main (left) window, others adjust automatically
+	Alt-p - launches the menu system. Try typing chrome and hit Enter
