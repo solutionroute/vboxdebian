@@ -40,12 +40,24 @@ cd ~
 
 # XOrg / X11 Stuff =============================================================
 sudo apt-get install -y xorg xorg-dev x11-xserver-utils x11-common x11-utils
+# DejaVu will be installed by others
+# Liberation has slightly tighter line spacing
 sudo apt-get install -y fonts-liberation2
+sudo apt-get install -y fonts-go
+
+
+
+
+
 # Window Manager dwm and dmenu
 sudo apt-get install -y dwm suckless-tools
 cd ~/src
 # grab dwm source for later customization if needed
 apt-get source dwm 
+# node and npm - better than the stock sources; more up to date
+# from: https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
+curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+sudo apt-get install -y nodejs
 cd ~
 
 # Add .xinitrc, .Xresources if not there
@@ -102,6 +114,8 @@ else
 	sudo sh -c 'echo "alias ll='ls -l'" >> /etc/bash.bashrc'
 	sudo sh -c 'echo "alias la='ls -A'" >> /etc/bash.bashrc'
 	sudo sh -c 'echo "alias l='ls -CF'" >> /etc/bash.bashrc'
+	# yes, vi
+	sudo sh -c 'echo "set editing-mode vi" >> ~/.inputrc'
 	# backports
 	if grep -qv "stretch-backports" /etc/apt/sources.list 
 	then
