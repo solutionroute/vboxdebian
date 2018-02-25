@@ -34,6 +34,10 @@ As a long time FreeBSD `ports` user now migrated to Linux I sometimes need remin
 	# check out one of the stock tasks presented during initial install...
 	apt-cache depends task-desktop
 	apt-cache depends task-desktop
+	# what implements (installed)
+	dpkg -S somefileorcapability
+
+The Debian WhereIsIt page is of great use here. https://wiki.debian.org/WhereIsIt
 
 ## What This Installs In Rough Order of Appearance
 
@@ -76,6 +80,9 @@ whatever mirror you prefer:
 	deb http://mirror.it.ubc.ca/debian stretch-backports main contrib
 	deb-src http://mirror.it.ubc.ca/debian stretch-backports main contrib 
 
+Also consider add `contrib` to the main sources list. Not doing so won't break anything
+important but at least one font package won't load (fira).
+
 	sudo apt-get update
 
 **In the VBox admin app in Windows**:
@@ -99,6 +106,9 @@ As your non-root-user:
 If all goes well you'll now have a decently if not minimally configured Debian / X / dwm environment with Neovim and Google Chrome installed. Reboot and check it out.
 
 ## Afterwards
+
+Have a look at dwm's `config.def.h` and perhaps a look through [this intro to
+dwm](https://sites.google.com/site/lazyboxx/-articles/dwm-a-newbie-s-guide).
 
 Key mappings for `dwm` can be found by reading `~/src/dwm-1.x/config.def.h` but here's a
 quick cheat sheet for the default mappings that are so sensible you probably won't change them:
