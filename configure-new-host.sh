@@ -114,8 +114,8 @@ else
 	sudo sh -c 'echo "alias ll='ls -l'" >> /etc/bash.bashrc'
 	sudo sh -c 'echo "alias la='ls -A'" >> /etc/bash.bashrc'
 	sudo sh -c 'echo "alias l='ls -CF'" >> /etc/bash.bashrc'
-	# yes, vi
-	sudo sh -c 'echo "set editing-mode vi" >> ~/.inputrc'
+	# yes, vi (user not root)
+	sh -c 'echo "set editing-mode vi" >> ~/.inputrc'
 	# backports
 	if grep -qv "stretch-backports" /etc/apt/sources.list 
 	then
